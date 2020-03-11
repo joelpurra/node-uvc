@@ -16,4 +16,14 @@ You should have received a copy of the GNU Lesser General Public License
 along with this program. If not, see <https://www.gnu.org/licenses/>.
 */
 
-module.exports = require("./src/");
+module.exports = {
+  Context: require("./context"),
+  Controls: require("./controls"),
+  Device: require("./device"),
+  DeviceDescriptor: require("./device-descriptor"),
+  DeviceHandle: require("./device-handle"),
+  FrameStream: require("./frame-stream"),
+  FrameStreamer: require("./frame-streamer"),
+  LibUvc: require("./libuvc"),
+  LibuvcStandardUnits: require("./libuvc-standard-units")
+};

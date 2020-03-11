@@ -16,4 +16,16 @@ You should have received a copy of the GNU Lesser General Public License
 along with this program. If not, see <https://www.gnu.org/licenses/>.
 */
 
-module.exports = require("./src/");
+const ref = require("ref-napi");
+
+module.exports = function getPointer(firstPointerPointer) {
+  const nonNullPointer = ref.reinterpretUntilZeros(firstPointerPointer, 1);
+
+  if (nonNullPointer.length === 0) {
+    return null;
+  }
+
+  const pointer = ref.reinterpret(nonNullPointer, ref.types.size_t.size, 0);
+
+  return pointer;
+};

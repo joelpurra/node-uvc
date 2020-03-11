@@ -39,9 +39,10 @@ npm run --silent test
 
 ## See also
 
+- [`uvcc`](https://joelpurra.com/projects/uvcc) for a command line interface (CLI).
 - [USB Video Class](https://en.wikipedia.org/wiki/USB_video_device_class) on Wikipedia.
 - [List of USB video class devices](https://en.wikipedia.org/wiki/List_of_USB_video_class_devices) on Wikipedia.
-- The [`node-libuvc`](https://joelpurra.com/projects/node-libuvc/) Node.js wrapper for [`libuvc`](https://ken.tossell.net/libuvc/).
+- The [`@ffi-libraries/libuvc-v0.0.6`](https://github.com/node-ffi-libraries/node-ffi-library-libuvc-v0.0.6) Node.js wrapper for [`libuvc`](https://ken.tossell.net/libuvc/).
 - The [`v4l-utils`](https://linuxtv.org/wiki/index.php/V4l-utils) for [video4linux](https://www.linuxtv.org) ([Wikipedia](https://en.wikipedia.org/wiki/Video4Linux)), which includes [`v4l2-ctl`](https://www.mankier.com/1/v4l2-ctl).
 
 ---

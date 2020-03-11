@@ -16,4 +16,34 @@ You should have received a copy of the GNU Lesser General Public License
 along with this program. If not, see <https://www.gnu.org/licenses/>.
 */
 
-module.exports = require("./src/");
+const { Transform } = require("stream");
+const ref = require("ref-napi");
+
+module.exports = class FrameStream extends Transform {
+  constructor() {
+    super({
+      readableObjectMode: true,
+      writableObjectMode: true
+    });
+  }
+
+  _transform(framePointer, encoding, callback) {
+    const frame = framePointer.deref();
+    const image = ref.reinterpret(frame.data, frame.data_bytes, 0);
+
+    const frameObject = {
+      image: image,
+      width: frame.width,
+      height: frame.height,
+      format: frame.format,
+      step: frame.step,
+      sequence: frame.sequence,
+      captureTime: {
+        seconds: frame.capture_time.tv_sec,
+        microseconds: frame.capture_time.tv_usec
+      }
+    };
+
+    return callback(null, frameObject);
+  }
+};

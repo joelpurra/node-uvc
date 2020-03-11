@@ -1,13 +1,13 @@
 # [`node-uvc`](https://joelpurra.com/projects/node-uvc/) Stream webcam video to disk
 
-Tests that a compatible camera is connected, stream 10 seconds of video (image frames), and saves them to a file on disk.
+Checks that a compatible camera is connected, stream 10 seconds of video image frames, and saves them to a file on disk.
 
-This is the [`libuvc` documentation example](https://ken.tossell.net/libuvc/doc/) by [Ken Tossell](https://ken.tossell.net/) converted to javascript in [`node-libuvc`](https://joelpurra.com/projects/node-libuvc/), but it saves the video to disk.
+This is the [`libuvc` documentation example](https://ken.tossell.net/libuvc/doc/) by [Ken Tossell](https://ken.tossell.net/) using the [`node-uvc`](https://joelpurra.com/projects/node-uvc/) wrapper, but it saves the video to disk.
 
 # Requirements
 
 - Libraries:
-  - [`node-libuvc`](https://joelpurra.com/projects/node-libuvc/) for the Node.js wrapper.
+  - [`@ffi-libraries/libuvc-v0.0.6`](https://github.com/node-ffi-libraries/node-ffi-library-libuvc-v0.0.6) for the Node.js wrapper.
   - [`libuvc`](https://ken.tossell.net/libuvc/) for capturing the stream of images.
 - Optional:
   - [`ffmpeg`](https://ffmpeg.org/) to convert from [Motion JPEG](https://en.wikipedia.org/wiki/Motion_JPEG) to a different format.

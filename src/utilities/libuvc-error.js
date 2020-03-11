@@ -16,4 +16,28 @@ You should have received a copy of the GNU Lesser General Public License
 along with this program. If not, see <https://www.gnu.org/licenses/>.
 */
 
-module.exports = require("./src/");
+const assert = require("assert");
+
+module.exports = class LibuvcError extends Error {
+  errno = null;
+
+  constructor(libuvc, errno, message) {
+    super(message);
+
+    assert(typeof errno === "number");
+    assert(typeof message === "string");
+    assert(message.length > 0);
+
+    this.errno = errno;
+
+    Object.defineProperty(this, "code", {
+      enumerable: true,
+      value:
+        String(libuvc.constants.uvc_error[this.errno]) || this.errno.toString()
+    });
+  }
+
+  toString() {
+    return `${super.toString()} (${JSON.stringify(this.code)})`;
+  }
+};

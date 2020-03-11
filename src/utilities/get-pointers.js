@@ -16,4 +16,31 @@ You should have received a copy of the GNU Lesser General Public License
 along with this program. If not, see <https://www.gnu.org/licenses/>.
 */
 
-module.exports = require("./src/");
+const ref = require("ref-napi");
+
+// TODO: use ref-array-di instead?
+module.exports = function getPointers(
+  maxNumberOfPointers,
+  firstPointerPointer
+) {
+  const nonNullPointers = ref.reinterpretUntilZeros(firstPointerPointer, 1);
+  const pointers = [];
+
+  for (let i = 0; i < maxNumberOfPointers; i++) {
+    let offset = i * ref.types.size_t.size;
+
+    if (offset >= nonNullPointers.length) {
+      break;
+    }
+
+    const pointer = ref.reinterpret(
+      nonNullPointers,
+      ref.types.size_t.size,
+      offset
+    );
+
+    pointers.push(pointer);
+  }
+
+  return pointers;
+};

@@ -16,4 +16,10 @@ You should have received a copy of the GNU Lesser General Public License
 along with this program. If not, see <https://www.gnu.org/licenses/>.
 */
 
-module.exports = require("./src/");
+const LibuvcError = require("./libuvc-error");
+
+module.exports = function assertLibuvcResult(libuvc, result, message) {
+  if (result < 0) {
+    throw new LibuvcError(libuvc, result, message);
+  }
+};

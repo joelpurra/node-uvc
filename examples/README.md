@@ -1,10 +1,10 @@
-# [`node-uvc`](https://joelpurra.com/projects/node-uvc/) tests
+# [`node-uvc`](https://joelpurra.com/projects/node-uvc/) examples
 
-Tests are mainly written in javascript. There are also reference implementations to ensure the underlying libraries, such as [`node-libuvc`](https://joelpurra.com/projects/node-libuvc/), work.
+Examples are mainly written in javascript. There are also reference implementations to ensure the underlying libraries, such as [`@ffi-libraries/libuvc-v0.0.6`](https://github.com/node-ffi-libraries/node-ffi-library-libuvc-v0.0.6), work as expected.
 
 ## File formats
 
-Some tests output files in various formats.
+Some examples output files in various formats.
 
 ### Motion JPEG
 
