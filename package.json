@@ -16,8 +16,13 @@
   },
   "dependencies": {},
   "devDependencies": {
+    "ffi-napi": "github:atishay/node-ffi-napi#40443ca8dad10cc3286c432774de3ce631d457e1",
     "husky": "^4.2.3",
-    "prettier": "^1.19.1"
+    "prettier": "^1.19.1",
+    "ref-array-di": "^1.2.1",
+    "ref-napi": "^1.4.3",
+    "ref-struct-di": "^1.1.0",
+    "ref-union-di": "^1.0.1"
   },
   "engines": {
     "node": ">=12.0.0"
