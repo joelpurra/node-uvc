@@ -1,0 +1,43 @@
+{
+  "name": "uvc",
+  "version": "0.0.0",
+  "description": "Library for USB Video Class (UVC) devices. Used to write software for webcams, camcorders, etcetera.",
+  "homepage": "https://joelpurra.com/projects/node-uvc/",
+  "main": "index.js",
+  "scripts": {
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+  },
+  "engines": {
+    "node": ">=12.0.0"
+  },
+  "keywords": [
+    "usb",
+    "usb video class",
+    "uvc",
+    "camera",
+    "webcamera",
+    "video",
+    "photo",
+    "capture",
+    "controls",
+    "configuration",
+    "libusb",
+    "libuvc"
+  ],
+  "bugs": {
+    "url": "https://github.com/joelpurra/node-uvc/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joelpurra/node-uvc.git"
+  },
+  "author": {
+    "name": "Joel Purra",
+    "email": "mig@joelpurra.se",
+    "url": "https://joelpurra.com/"
+  },
+  "license": "LGPL-3.0"
+}
