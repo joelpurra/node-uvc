@@ -17,16 +17,16 @@
   "dependencies": {
     "@ffi-libraries/libuvc-v0.0.6": "github:node-ffi-libraries/node-ffi-library-libuvc-v0.0.6#semver:^1.0.0",
     "bluebird": "^3.7.2",
-    "lodash": "^4.17.20",
-    "yaml": "^1.10.0"
+    "lodash": "^4.17.21",
+    "yaml": "^1.10.2"
   },
   "devDependencies": {
-    "ffi-napi": "^3.0.1",
-    "husky": "^4.2.3",
+    "ffi-napi": "^3.1.0",
+    "husky": "^4.3.8",
     "prettier": "^1.19.1",
-    "ref-array-di": "^1.2.1",
+    "ref-array-di": "^1.2.2",
     "ref-napi": "^2.1.2",
-    "ref-struct-di": "^1.1.0",
+    "ref-struct-di": "^1.1.1",
     "ref-union-di": "^1.0.1"
   },
   "engines": {
