@@ -27,4 +27,4 @@ The output file is `stream-disk.mjpeg`. See [file formats](../README.md#file-for
 
 ---
 
-[`node-uvc`](https://joelpurra.com/projects/node-uvc/) Copyright &copy; 2020 [Joel Purra](https://joelpurra.com/). Released under [GNU Lesser General Public License version 3.0 (LGPL-3.0)](https://www.gnu.org/licenses/lgpl.html). [Your donations are appreciated!](https://joelpurra.com/donate/)
+[`node-uvc`](https://joelpurra.com/projects/node-uvc/) Copyright &copy; 2020, 2021 [Joel Purra](https://joelpurra.com/). Released under [GNU Lesser General Public License version 3.0 (LGPL-3.0)](https://www.gnu.org/licenses/lgpl.html). [Your donations are appreciated!](https://joelpurra.com/donate/)
