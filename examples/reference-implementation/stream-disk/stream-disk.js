@@ -45,7 +45,8 @@ const ref = require("ref-napi");
 const { load } = require("@ffi-libraries/libuvc-v0.0.6");
 
 const finished = util.promisify(stream.finished);
-const voidPtr = ref.refType(ref.types.void);
+const js_void = ref.types.void;
+const js_voidPointer = ref.refType(js_void);
 
 const sleep = async s =>
   new Promise(resolve => {
@@ -75,12 +76,16 @@ async function /* int */ main(/* int */ argc, /* char ** */ argv) {
   const libuvc = await headerLoader();
 
   const filename = "stream-disk.mjpeg";
-  const /* uvc_context_t * */ ctx = ref.alloc(libuvc.uvc_context_tPtr);
-  const /* uvc_device_t * */ dev = ref.alloc(libuvc.uvc_device_tPtr);
-  const /* uvc_device_handle_t * */ devh = ref.alloc(
-      libuvc.uvc_device_handle_tPtr
+  const /* uvc_context_t * */ ctx = ref.alloc(
+      libuvc.types.uvc_context_tPointer
     );
-  const /* uvc_stream_ctrl_t */ ctrl = ref.alloc(libuvc.uvc_stream_ctrl_t);
+  const /* uvc_device_t * */ dev = ref.alloc(libuvc.types.uvc_device_tPointer);
+  const /* uvc_device_handle_t * */ devh = ref.alloc(
+      libuvc.types.uvc_device_handle_tPointer
+    );
+  const /* uvc_stream_ctrl_t */ ctrl = ref.alloc(
+      libuvc.types.uvc_stream_ctrl_t
+    );
   let /* uvc_error_t */ res;
 
   /* Initialize a UVC service context. Libuvc will set up its own libusb
@@ -125,7 +130,7 @@ async function /* int */ main(/* int */ argc, /* char ** */ argv) {
       res = libuvc.functions.uvc_get_stream_ctrl_format_size(
         devh.deref(),
         /* & */ ctrl /* result stored in ctrl */,
-        libuvc.CONSTANTS.uvc_frame_format
+        libuvc.constants.uvc_frame_format
           .UVC_FRAME_FORMAT_MJPEG /* MJPEG for writing to disk */,
         640,
         480,
@@ -146,7 +151,7 @@ async function /* int */ main(/* int */ argc, /* char ** */ argv) {
          */
         const callback = ffi.Callback(
           "void",
-          [libuvc.uvc_frame_tPtr, voidPtr],
+          [libuvc.types.uvc_frame_tPointer, js_voidPointer],
           cb
         );
         const fileWriteStream = fs.createWriteStream(filename);
@@ -178,9 +183,9 @@ async function /* int */ main(/* int */ argc, /* char ** */ argv) {
             UVC_AUTO_EXPOSURE_MODE_AUTO
           );
 
-          if (res == libuvc.CONSTANTS.uvc_error.UVC_SUCCESS) {
+          if (res == libuvc.constants.uvc_error.UVC_SUCCESS) {
             console.log(" ... enabled auto exposure");
-          } else if (res == libuvc.CONSTANTS.uvc_error.UVC_ERROR_PIPE) {
+          } else if (res == libuvc.constants.uvc_error.UVC_ERROR_PIPE) {
             /* this error indicates that the camera does not support the full AE mode;
              * try again, using aperture priority mode (fixed aperture, variable exposure time) */
             console.log(

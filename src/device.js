@@ -54,7 +54,7 @@ module.exports = class Device {
     assert.notStrictEqual(this.pointer, null);
 
     const deviceHandlePointer = ref.alloc(
-      this.libuvc.types.uvc_device_handle_tPtr
+      this.libuvc.types.uvc_device_handle_tPointer
     );
 
     const result = this.libuvc.functions.uvc_open(
@@ -76,7 +76,7 @@ module.exports = class Device {
     assert.notStrictEqual(this.pointer, null);
 
     const deviceDescriptorPointer = ref.alloc(
-      this.libuvc.types.uvc_device_descriptor_tPtr
+      this.libuvc.types.uvc_device_descriptor_tPointer
     );
 
     const result = this.libuvc.functions.uvc_get_device_descriptor(

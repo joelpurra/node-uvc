@@ -27,7 +27,8 @@ const libuvc = require("@ffi-libraries/libuvc-v0.0.6");
 const FrameStream = require("./frame-stream");
 
 const finished = util.promisify(stream.finished);
-const voidPtr = ref.refType(ref.types.void);
+const js_void = ref.types.void;
+const js_voidPointer = ref.refType(js_void);
 
 module.exports = class FrameStreamer {
   libuvc = null;
@@ -87,7 +88,7 @@ module.exports = class FrameStreamer {
       this.frameStream = new FrameStream();
       this.onFrameCallback = ffi.Callback(
         "void",
-        [this.libuvc.types.uvc_frame_tPtr, voidPtr],
+        [this.libuvc.types.uvc_frame_tPointer, js_voidPointer],
         (frame, userPointer) => this.frameStream.write(frame)
       );
 

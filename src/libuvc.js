@@ -31,7 +31,10 @@ const { maxNumberOfUvcDevices } = require("./utilities/constants");
 
 module.exports = class LibUvc {
   library = null;
+
+  // TODO: dynamically select the header file for the current operating system.
   headerFile = "./include/libuvc/libuvc.h";
+
   header = null;
 
   async initialize() {
@@ -45,8 +48,7 @@ module.exports = class LibUvc {
     Object.defineProperties(this, {
       constants: {
         configurable: true,
-        // NOTE: case differs.
-        get: () => this.header.CONSTANTS
+        get: () => this.header.constants
       },
       functions: {
         configurable: true,
@@ -54,12 +56,7 @@ module.exports = class LibUvc {
       },
       types: {
         configurable: true,
-        get: () =>
-          fromPairs(
-            Object.entries(this.header).filter(
-              ([key, property]) => !["CONSTANTS", "functions"].includes(key)
-            )
-          )
+        get: () => this.header.types
       }
     });
   }

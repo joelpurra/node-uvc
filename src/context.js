@@ -43,7 +43,7 @@ module.exports = class Context {
     assert.notStrictEqual(this.libuvc, null);
 
     if (this.uvcContext === null) {
-      this.uvcContext = ref.alloc(this.libuvc.types.uvc_context_tPtr);
+      this.uvcContext = ref.alloc(this.libuvc.types.uvc_context_tPointer);
     }
 
     {
@@ -86,7 +86,7 @@ module.exports = class Context {
     }
 
     const pointerToDevicePointer = pointer =>
-      ref.get(pointer, 0, this.libuvc.types.uvc_device_tPtr);
+      ref.get(pointer, 0, this.libuvc.types.uvc_device_tPointer);
 
     const devicePointers = getPointers(maxNumberOfUvcDevices, deviceListPointer)
       .map(pointerToDevicePointer)
@@ -103,7 +103,7 @@ module.exports = class Context {
     assert.notStrictEqual(this.libuvc, null);
     assert.notStrictEqual(this.uvcContext, null);
 
-    const devicePointer = ref.alloc(this.libuvc.types.uvc_device_tPtr);
+    const devicePointer = ref.alloc(this.libuvc.types.uvc_device_tPointer);
 
     const result = this.libuvc.functions.uvc_find_device(
       this.uvcContext.deref(),
