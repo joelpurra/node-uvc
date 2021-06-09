@@ -4,11 +4,29 @@ Node.js library for [USB Video Class](https://en.wikipedia.org/wiki/USB_video_de
 
 [UVC-compliant devices](https://en.wikipedia.org/wiki/List_of_USB_video_class_devices) include webcams, digital camcorders, transcoders, analog video converters and still-image cameras.
 
-- To change settings of your UVC camera from the command line, use [`uvcc`](https://joelpurra.com/projects/uvcc).
+## Installation
+
+```shell
+npm install --save uvc
+```
 
 ## Features
 
-- None so far?
+Functional:
+
+- Locate UVC devices on the system and retrieve out device details.
+- Change camera controls, such as image contrast, zoom, and toggling automatic settings.
+- Stream video and individual image frames.
+- Transform image data using [standard Node.js streams](https://nodejs.org/api/stream.html).
+
+Technical:
+
+- Thin translation layer built for Javascript developer convenience.
+  - Ships with pre-built binaries from [`@ffi-libraries/libuvc-v0.0.6`](https://github.com/node-ffi-libraries/node-ffi-library-libuvc-v0.0.6).
+  - Based on the [`libuvc`](https://ken.tossell.net/libuvc/) cross-platform C library.
+- Javascript `class` implementation.
+  - Asynchronous `async`/`await` class methods.
+  - Resource management using `.initialize()`/`.uninitialize()` methods.
 
 ## Installation
 
@@ -20,15 +38,37 @@ npm install --save uvc
 
 ## Usage
 
+See [`./examples/`](./examples/) for ready-to-run code.
+
 ```javascript
-// TODO
+const { Context, Device, DeviceHandle, LibUvc } = require("uvc");
+
+const libuvc = new LibUvc();
+await libuvc.initialize();
+
+const context = new Context(libuvc);
+await context.initialize();
+
+const device = await context.findDevice();
+await device.initialize();
+
+const deviceHandle = await device.open();
+await deviceHandle.initialize();
+
+// NOTE: use the UVC device here, for example using the Controls and FrameStreamer classes.
+
+await deviceHandle.uninitialize();
+await device.uninitialize();
+await context.uninitialize();
+await libuvc.uninitialize();
 ```
 
 ## Development
 
-Get the source code from the [`node-uvc` repository](https://github.com/joelpurra/node-uvc).
-
-Follow [git-flow](https://danielkummer.github.io/git-flow-cheatsheet/) and use [git-flow-avh](https://github.com/petervanderdoes/gitflow-avh).
+- Requires a UVC device, such as a compatible webcam.
+- Get the source code from the [`node-uvc` repository](https://github.com/joelpurra/node-uvc).
+- Follow [git-flow](https://danielkummer.github.io/git-flow-cheatsheet/) and use [git-flow-avh](https://github.com/petervanderdoes/gitflow-avh).
+- Make sure that all example code works by testing them manually.
 
 ```shell
 # Make sure git-flow is initialized.
