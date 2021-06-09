@@ -1,6 +1,6 @@
 {
   "name": "uvc",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Library for USB Video Class (UVC) devices. Used to write software for webcams, camcorders, etcetera.",
   "homepage": "https://joelpurra.com/projects/node-uvc/",
   "main": "index.js",
