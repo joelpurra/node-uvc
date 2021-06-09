@@ -24,7 +24,7 @@ const {
   DeviceDescriptor,
   DeviceHandle,
   FrameStreamer,
-  LibUvc
+  LibUvc,
 } = require("../../");
 
 const main = async () => {
@@ -35,13 +35,13 @@ const main = async () => {
   await context.initialize();
 
   const devices = context.getDeviceList();
-  await Bluebird.map(devices, device => device.initialize());
+  await Bluebird.map(devices, (device) => device.initialize());
 
-  const deviceDescriptors = await Bluebird.map(devices, device =>
+  const deviceDescriptors = await Bluebird.map(devices, (device) =>
     device.getDescriptor()
   );
 
-  await Bluebird.map(deviceDescriptors, deviceDescriptor =>
+  await Bluebird.map(deviceDescriptors, (deviceDescriptor) =>
     deviceDescriptor.initialize()
   );
 
@@ -65,10 +65,10 @@ const main = async () => {
   // await device.uninitialize();
   // });
 
-  await Bluebird.map(deviceDescriptors, deviceDescriptor =>
+  await Bluebird.map(deviceDescriptors, (deviceDescriptor) =>
     deviceDescriptor.uninitialize()
   );
-  await Bluebird.map(devices, device => device.uninitialize());
+  await Bluebird.map(devices, (device) => device.uninitialize());
   await context.uninitialize();
   await libuvc.uninitialize();
 };

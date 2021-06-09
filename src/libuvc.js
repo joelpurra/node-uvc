@@ -48,16 +48,16 @@ module.exports = class LibUvc {
     Object.defineProperties(this, {
       constants: {
         configurable: true,
-        get: () => this.header.constants
+        get: () => this.header.constants,
       },
       functions: {
         configurable: true,
-        get: () => this.header.functions
+        get: () => this.header.functions,
       },
       types: {
         configurable: true,
-        get: () => this.header.types
-      }
+        get: () => this.header.types,
+      },
     });
   }
 

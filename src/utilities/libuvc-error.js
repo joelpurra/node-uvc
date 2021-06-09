@@ -33,7 +33,7 @@ module.exports = class LibuvcError extends Error {
     Object.defineProperty(this, "code", {
       enumerable: true,
       value:
-        String(libuvc.constants.uvc_error[this.errno]) || this.errno.toString()
+        String(libuvc.constants.uvc_error[this.errno]) || this.errno.toString(),
     });
   }
 

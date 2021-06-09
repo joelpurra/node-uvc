@@ -23,7 +23,7 @@ module.exports = class FrameStream extends Transform {
   constructor() {
     super({
       readableObjectMode: true,
-      writableObjectMode: true
+      writableObjectMode: true,
     });
   }
 
@@ -40,8 +40,8 @@ module.exports = class FrameStream extends Transform {
       sequence: frame.sequence,
       captureTime: {
         seconds: frame.capture_time.tv_sec,
-        microseconds: frame.capture_time.tv_usec
-      }
+        microseconds: frame.capture_time.tv_usec,
+      },
     };
 
     return callback(null, frameObject);

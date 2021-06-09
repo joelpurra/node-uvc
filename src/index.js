@@ -25,5 +25,5 @@ module.exports = {
   FrameStream: require("./frame-stream"),
   FrameStreamer: require("./frame-streamer"),
   LibUvc: require("./libuvc"),
-  LibuvcStandardUnits: require("./libuvc-standard-units")
+  LibuvcStandardUnits: require("./libuvc-standard-units"),
 };

@@ -85,15 +85,15 @@ module.exports = class Context {
       );
     }
 
-    const pointerToDevicePointer = pointer =>
+    const pointerToDevicePointer = (pointer) =>
       ref.get(pointer, 0, this.libuvc.types.uvc_device_tPointer);
 
     const devicePointers = getPointers(maxNumberOfUvcDevices, deviceListPointer)
       .map(pointerToDevicePointer)
-      .filter(devicePointer => !ref.isNull(devicePointer.deref()));
+      .filter((devicePointer) => !ref.isNull(devicePointer.deref()));
 
     const devices = devicePointers.map(
-      devicePointer => new Device(this.libuvc, devicePointer)
+      (devicePointer) => new Device(this.libuvc, devicePointer)
     );
 
     return devices;

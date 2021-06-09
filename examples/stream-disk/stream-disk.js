@@ -27,21 +27,21 @@ const {
   Device,
   DeviceHandle,
   FrameStreamer,
-  LibUvc
+  LibUvc,
 } = require("../../");
 
 const { Transform } = stream;
 const finished = util.promisify(stream.finished);
 
-const sleep = async s =>
-  new Promise(resolve => {
+const sleep = async (s) =>
+  new Promise((resolve) => {
     setTimeout(resolve, s * 1000);
   });
 
 class FrameImageTransform extends Transform {
   constructor() {
     super({
-      writableObjectMode: true
+      writableObjectMode: true,
     });
   }
 

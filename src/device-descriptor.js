@@ -86,14 +86,14 @@ module.exports = class DeviceDescriptor {
     const object = {
       vendor: {
         id: this.vendorId,
-        name: this.vendorName
+        name: this.vendorName,
       },
       product: {
         id: this.productId,
-        name: this.productName
+        name: this.productName,
       },
       serialNumber: this.serialNumber,
-      complianceLevel: this.complianceLevel
+      complianceLevel: this.complianceLevel,
     };
 
     return object;

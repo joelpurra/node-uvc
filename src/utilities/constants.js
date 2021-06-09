@@ -17,5 +17,5 @@ along with this program. If not, see <https://www.gnu.org/licenses/>.
 */
 
 module.exports = {
-  maxNumberOfUvcDevices: 100
+  maxNumberOfUvcDevices: 100,
 };

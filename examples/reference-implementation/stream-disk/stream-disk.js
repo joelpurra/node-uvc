@@ -48,8 +48,8 @@ const finished = util.promisify(stream.finished);
 const js_void = ref.types.void;
 const js_voidPointer = ref.refType(js_void);
 
-const sleep = async s =>
-  new Promise(resolve => {
+const sleep = async (s) =>
+  new Promise((resolve) => {
     setTimeout(resolve, s * 1000);
   });
 

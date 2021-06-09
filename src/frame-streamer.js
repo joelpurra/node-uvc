@@ -135,7 +135,7 @@ module.exports = class FrameStreamer {
 
     // TODO: figure out why the application crashes silently when waiting to finish the writable part of the transform stream.
     await finished(this.frameStream, {
-      writable: false
+      writable: false,
     });
 
     this.frameStream = null;

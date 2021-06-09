@@ -44,7 +44,7 @@ module.exports = class Controls {
       .map(
         ([name, field]) => `${field.signed ? "" : "u"}int${field.length * 8}`
       )
-      .map(type => ref.alloc(type));
+      .map((type) => ref.alloc(type));
   }
 
   valueGetterGenerator = (name, control) => () => {
@@ -52,7 +52,7 @@ module.exports = class Controls {
     const valueGetterArguments = [
       this.deviceHandle.deviceHandle.deref(),
       ...Controls.getTypeArray(control),
-      this.libuvc.constants.uvc_req_code.UVC_GET_CUR
+      this.libuvc.constants.uvc_req_code.UVC_GET_CUR,
     ];
     const result = valueGetter(...valueGetterArguments);
 
@@ -64,12 +64,12 @@ module.exports = class Controls {
 
     const values = valueGetterArguments
       .slice(1, -1)
-      .map(value => value.deref());
+      .map((value) => value.deref());
 
     return values;
   };
 
-  valueSetterGenerator = name => value => {
+  valueSetterGenerator = (name) => (value) => {
     const valueSetter = this.libuvc.functions[`uvc_set_${name}`];
     const setterArguments = [this.deviceHandle.deviceHandle.deref()].concat(
       value
@@ -101,7 +101,7 @@ module.exports = class Controls {
         // NOTE: asynchronous getter.
         get: async () => this.valueGetterGenerator(name, control)(),
         // NOTE: asynchronous setter.
-        set: async value => this.valueSetterGenerator(name)(value)
+        set: async (value) => this.valueSetterGenerator(name)(value),
 
         // TODO: fix ffi-generate to output the uvc_ct_ctrl_selector constants, then use them for uvc_get_ctrl(...).
         // TODO: move/copy uvc_ct_ctrl_selector to standard-units.yaml?

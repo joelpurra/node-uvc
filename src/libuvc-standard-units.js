@@ -73,9 +73,9 @@ module.exports = class LibuvcStandardUnits {
                 {
                   ...control,
                   unit: {
-                    ...unitWithoutControls
-                  }
-                }
+                    ...unitWithoutControls,
+                  },
+                },
               ];
             })
           )
