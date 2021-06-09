@@ -4,12 +4,6 @@ Node.js library for [USB Video Class](https://en.wikipedia.org/wiki/USB_video_de
 
 [UVC-compliant devices](https://en.wikipedia.org/wiki/List_of_USB_video_class_devices) include webcams, digital camcorders, transcoders, analog video converters and still-image cameras.
 
-## Installation
-
-```shell
-npm install --save uvc
-```
-
 ## Features
 
 Functional:
